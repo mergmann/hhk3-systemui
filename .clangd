@@ -3,6 +3,7 @@ CompileFlags:
     - -Wall
     - -Wextra
     - -Werror
+    - -m32
   Remove:
     - -m*
     - -fstrict-volatile-bitfields
@@ -14,3 +15,6 @@ Style:
 Diagnostics:
   ClangTidy:
     FastCheckFilter: Loose
+
+Documentation:
+  CommentFormat: Doxygen
