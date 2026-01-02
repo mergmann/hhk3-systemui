@@ -1,0 +1,30 @@
+.macro DEFINE_OS_FUNC name, addr
+.globl _\name
+.set _\name, \addr
+.endm
+
+DEFINE_OS_FUNC PegThing_ctor_0 0x8011e79c
+DEFINE_OS_FUNC PegThing_ctor_1 0x8011e846
+
+DEFINE_OS_FUNC PegTextThing_ctor_0 0x800ff636
+DEFINE_OS_FUNC PegTextThing_ctor_1 0x800ff6f6
+
+DEFINE_OS_FUNC PegWindow_ctor_0 0x80121d32
+DEFINE_OS_FUNC PegWindow_ctor_1 0x80121dbe
+
+DEFINE_OS_FUNC PegDecoratedWindow_ctor_0 0x800fe2ea
+DEFINE_OS_FUNC PegDecoratedWindow_ctor_1 0x800fe338
+
+DEFINE_OS_FUNC PegMessageWindow_ctor_0 0x801037fe
+DEFINE_OS_FUNC PegMessageWindow_ctor_1 0x80103b8a
+
+DEFINE_OS_FUNC PegTitle_ctor 0x80120cb6
+
+DEFINE_OS_FUNC PegTextBox_ctor 0x8011d050
+
+DEFINE_OS_FUNC PegTextButton_ctor_0 0x800f94ce
+DEFINE_OS_FUNC PegTextButton_ctor_1 0x800f9598
+DEFINE_OS_FUNC PegTextButton_ctor_2 0x800f96e8
+
+DEFINE_OS_FUNC PegRect_CenterIfLandscape 0x8010b15a
+DEFINE_OS_FUNC PegRect_SetAndCenterIfLandscape 0x8010b10a

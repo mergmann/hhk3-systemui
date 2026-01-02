@@ -3,28 +3,37 @@
 .set _\name, \addr
 .endm
 
-DEFINE_OS_FUNC PegThing_ctor_0 0x8011e79c
-DEFINE_OS_FUNC PegThing_ctor_1 0x8011e846
+DEFINE_OS_FUNC PegThing_ctor_0 0x8011d7c4
+DEFINE_OS_FUNC PegThing_ctor_1 0x8011d86e
 
-DEFINE_OS_FUNC PegTextThing_ctor_0 0x800ff636
-DEFINE_OS_FUNC PegTextThing_ctor_1 0x800ff6f6
+DEFINE_OS_FUNC PegTextThing_ctor_0 0x800fe65e
+DEFINE_OS_FUNC PegTextThing_ctor_1 0x800fe71e
 
-DEFINE_OS_FUNC PegWindow_ctor_0 0x80121d32
-DEFINE_OS_FUNC PegWindow_ctor_1 0x80121dbe
+DEFINE_OS_FUNC PegWindow_ctor_0 0x80120d5a
+DEFINE_OS_FUNC PegWindow_ctor_1 0x80120de6
 
-DEFINE_OS_FUNC PegDecoratedWindow_ctor_0 0x800fe2ea
-DEFINE_OS_FUNC PegDecoratedWindow_ctor_1 0x800fe338
+DEFINE_OS_FUNC PegDecoratedWindow_ctor_0 0x800fd312
+DEFINE_OS_FUNC PegDecoratedWindow_ctor_1 0x800fd360
 
-DEFINE_OS_FUNC PegMessageWindow_ctor_0 0x801037fe
-DEFINE_OS_FUNC PegMessageWindow_ctor_1 0x80103b8a
+DEFINE_OS_FUNC PegMessageWindow_ctor_0 0x80102826
+DEFINE_OS_FUNC PegMessageWindow_ctor_1 0x80102bb2
 
-DEFINE_OS_FUNC PegTitle_ctor 0x80120cb6
+DEFINE_OS_FUNC PegTitle_ctor 0x8011fcde
 
-DEFINE_OS_FUNC PegTextBox_ctor 0x8011d050
+DEFINE_OS_FUNC PegTextBox_ctor 0x8011c078
 
-DEFINE_OS_FUNC PegTextButton_ctor_0 0x800f94ce
-DEFINE_OS_FUNC PegTextButton_ctor_1 0x800f9598
-DEFINE_OS_FUNC PegTextButton_ctor_2 0x800f96e8
+DEFINE_OS_FUNC PegTextButton_ctor_0 0x800f84f6
+DEFINE_OS_FUNC PegTextButton_ctor_1 0x800f85c0
+DEFINE_OS_FUNC PegTextButton_ctor_2 0x800f8710
 
-DEFINE_OS_FUNC PegRect_CenterIfLandscape 0x8010b15a
-DEFINE_OS_FUNC PegRect_SetAndCenterIfLandscape 0x8010b10a
+DEFINE_OS_FUNC PegRect_CenterIfLandscape 0x8010a182
+DEFINE_OS_FUNC PegRect_SetAndCenterIfLandscape 0x8010a132
+
+DEFINE_OS_FUNC PegComboBox_ctor 0x800fbeaa
+DEFINE_OS_FUNC GUIDropDownMenuItem_ctor 0x800fab38
+
+DEFINE_OS_FUNC PegNotebook_ctor 0x80104eec
+
+DEFINE_OS_FUNC CPDialog_ctor 0x800d57f6
+DEFINE_OS_FUNC PegDialog_ctor 0x800fd828
+
