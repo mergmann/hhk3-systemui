@@ -1,7 +1,14 @@
-SOURCEDIR = src
+SRCDIR = src
 BUILDDIR = obj
 OUTDIR = dist
 DEPDIR = .deps
+
+OSDIR_2000 := os/2000/
+OSDIR_7002 := os/7002/
+
+OS ?= 7002
+
+SOURCEDIR := $(SRCDIR) $(OSDIR_$(OS))
 
 AS:=sh4a_nofpueb-elf-gcc
 AS_FLAGS:=-gdwarf-5

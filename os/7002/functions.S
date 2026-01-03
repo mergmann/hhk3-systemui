@@ -32,5 +32,7 @@ DEFINE_OS_FUNC PegTextButton_ctor_0 0x800f94ce
 DEFINE_OS_FUNC PegTextButton_ctor_1 0x800f9598
 DEFINE_OS_FUNC PegTextButton_ctor_2 0x800f96e8
 
+DEFINE_OS_FUNC PegList_ctor 0x801be594
+
 DEFINE_OS_FUNC PegRect_CenterIfLandscape 0x8010b15a
 DEFINE_OS_FUNC PegRect_SetAndCenterIfLandscape 0x8010b10a
