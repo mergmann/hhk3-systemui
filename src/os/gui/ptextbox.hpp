@@ -47,6 +47,7 @@ protected:
   SIGNED miMarkLine;
 
   friend class PegTextBox;
+  friend class PegEditBox;
 };
 
 static_assert(sizeof(PegTextBox_Thin) == 0xac,

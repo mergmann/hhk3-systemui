@@ -129,3 +129,44 @@ symbols:
   PegNotebook_ctor:
     2000: 0x80104eec
     7002: 0x80105ec4
+
+
+  PegEditBox_ctor:
+    2000: 0x8025fd7a
+    7002: 0x8025fd1e
+  PegEditBox_DeleteMarkedText:
+    2000: 0x00000000
+    7002: 0x00000000
+  PegEditBox_CopyToScratchPad:
+    2000: 0x00000000
+    7002: 0x00000000
+  PegEditBox_PasteFromScratchPad:
+    2000: 0x00000000
+    7002: 0x00000000
+  PegEditBox_HomeCursor:
+    2000: 0x00000000
+    7002: 0x00000000
+  PegEditBox_InsertCharAtCursor:
+    2000: 0x8025dd94
+    7002: 0x80260db4
+  PegEditBox_SetCursorRowColFromIndex:
+    2000: 0x80261198
+    7002: 0x8025e178
+  PegEditBox_MoveCursor:
+    2000: 0x8025e238
+    7002: 0x80261258
+  PegEditBox_SelectAll:
+    2000: 0x8025e31c
+    7002: 0x8026133c
+  PegEditBox_DrawCursor:
+    2000: 0x8025e8ec
+    7002: 0x8026190c
+  PegEditBox_RemoveCursor:
+    2000: 0x8025e9ce
+    7002: 0x802619ee
+  PegEditBox_GetCharAtCursor:
+    2000: 0x8025eb70
+    7002: 0x80261b90
+  PegEditBox_SetEditModeState:
+    2000: 0x8025eb22
+    7002: 0x80261b42
