@@ -5,11 +5,18 @@
 #include <cstddef>
 
 struct PegMessage;
+class PegScreen_Thin;
 
 struct PegThing_Thin;
 struct PegThing_VFTable;
 
 class PegThing;
+
+extern "C" PegThing_Thin *PegThing_ctor_0(PegThing_Thin *, const PegRect *,
+                                          WORD, WORD);
+extern "C" PegThing_Thin *PegThing_ctor_1(PegThing_Thin *, WORD, WORD);
+
+extern "C" PegScreen_Thin *PegThing_Screen();
 
 struct PegThing_VFTable : Element_VFTable {
   VFTableFunction<void, bool> _dtor;
@@ -109,6 +116,7 @@ protected:
   }
 
   friend PegThing;
+  friend class PegList;
 };
 
 static_assert(sizeof(PegThing_Thin) == 0x50, "PegThing_Thin has wrong size");
@@ -118,13 +126,15 @@ public:
   PegThing(const PegRect &Rect, WORD wId, WORD wStyle);
   PegThing(WORD wId, WORD wStyle);
 
-  ~PegThing();
+  virtual ~PegThing();
 
   /**
    * @brief Get the underlying ClassPad object
    * @return ClassPad object
    */
   inline PegThing_Thin *obj() { return static_cast<PegThing_Thin *>(_obj); }
+
+  inline static PegScreen_Thin *Screen() { return PegThing_Screen(); }
 
   /**
    * @brief
@@ -173,7 +183,3 @@ private:
     return static_cast<PegThing_VFTable *>(_vftOld);
   }
 };
-
-extern "C" PegThing_Thin *PegThing_ctor_0(PegThing_Thin *, const PegRect *,
-                                          WORD, WORD);
-extern "C" PegThing_Thin *PegThing_ctor_1(PegThing_Thin *, WORD, WORD);

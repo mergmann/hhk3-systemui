@@ -3,8 +3,14 @@
 .set _\name, \addr
 .endm
 
+DEFINE_OS_FUNC PegScreen_Invalidate 0x8010c89c
+
 DEFINE_OS_FUNC PegThing_ctor_0 0x8011d7c4
 DEFINE_OS_FUNC PegThing_ctor_1 0x8011d86e
+
+DEFINE_OS_FUNC PegThing_Presentation 0x8011e610
+DEFINE_OS_FUNC PegThing_MessageQueue 0x8011e616
+DEFINE_OS_FUNC PegThing_Screen 0x8011e61c
 
 DEFINE_OS_FUNC PegTextThing_ctor_0 0x800fe65e
 DEFINE_OS_FUNC PegTextThing_ctor_1 0x800fe71e
@@ -30,10 +36,22 @@ DEFINE_OS_FUNC PegRect_CenterIfLandscape 0x8010a182
 DEFINE_OS_FUNC PegRect_SetAndCenterIfLandscape 0x8010a132
 
 DEFINE_OS_FUNC PegComboBox_ctor 0x800fbeaa
-DEFINE_OS_FUNC GUIDropDownMenuItem_ctor 0x800fab38
 
 DEFINE_OS_FUNC PegNotebook_ctor 0x80104eec
 
-DEFINE_OS_FUNC CPDialog_ctor 0x800d57f6
+DEFINE_OS_FUNC CPDialog_ctor_2 0x800d57f6
 DEFINE_OS_FUNC PegDialog_ctor 0x800fd828
 
+DEFINE_OS_FUNC PegComboBoxItemPrompt_ctor_2 0x800fab38
+
+
+DEFINE_OS_FUNC PegList_ctor 0x801bd4e8
+DEFINE_OS_FUNC PegVertList_ctor 0x801be394
+
+DEFINE_OS_FUNC PegList_SelectNext 0x801bde02
+DEFINE_OS_FUNC PegList_SelectPrevious 0x00000000
+DEFINE_OS_FUNC PegList_PageDown 0x801bdea6
+DEFINE_OS_FUNC PegList_PageUp 0x801bdfb6
+
+DEFINE_OS_FUNC PegVertList_PositionChildren 0x00000000
+DEFINE_OS_FUNC PegHorzList_PositionChildren 0x00000000

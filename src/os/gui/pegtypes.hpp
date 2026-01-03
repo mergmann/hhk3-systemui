@@ -52,6 +52,70 @@ const WORD TJ_LEFT = 0x0040;
 const WORD TJ_CENTER = 0x0080;
 const WORD TJ_MASK = 0x00E0;
 
+
+#define PEG_FIRST_SIGNAL 0x80
+#define PEG_FIRST_USER_MESSAGE 0x4000
+#define PEG_SIGNAL(id, signal) (PEG_FIRST_SIGNAL + ((id) << 4) + signal)
+
+struct PegRect;
+
+extern "C" void PegRect_CenterIfLandscape(PegRect *self, BOOL shiftUp);
+extern "C" void PegRect_SetAndCenterIfLandscape(PegRect *self, SIGNED x1,
+                                                SIGNED y1, SIGNED x2, SIGNED y2,
+                                                BOOL shiftUp);
+
+const UCHAR CF_NONE = 0x00;
+const UCHAR CF_FILL = 0x01;
+const UCHAR CF_DASHED = 0x02;
+const UCHAR CF_XOR = 0x04;
+const UCHAR CF_ALPHA = 0x08;
+
+struct PegColor {
+  PegColor(COLORVAL fg, COLORVAL bg = 0xFFFF, UCHAR flags = CF_NONE) {
+    uForeground = fg;
+    uBackground = bg;
+    uFlags = flags;
+  }
+
+  PegColor() {
+    uForeground = uBackground = 0x0000;
+    uFlags = CF_NONE;
+  }
+
+  void Set(COLORVAL fg, COLORVAL bg = 0x0000, UCHAR flags = CF_NONE) {
+    uForeground = fg;
+    uBackground = bg;
+    uFlags = flags;
+  }
+
+  COLORVAL uForeground;
+  COLORVAL uBackground;
+  UCHAR uFlags;
+};
+
+/*--------------------------------------------------------------------------*/
+// System Status flags common to all object types
+// These flags are maintained internally by PEG, but can be modified (at your
+// own risk!) by the application level software.
+/*--------------------------------------------------------------------------*/
+
+const WORD PSF_VISIBLE =           0x0001;
+const WORD PSF_CURRENT =           0x0002;
+const WORD PSF_SELECTABLE =        0x0004;
+const WORD PSF_SIZEABLE =          0x0008;
+const WORD PSF_MOVEABLE =          0x0010;
+const WORD PSF_NONCLIENT =         0x0020;
+const WORD PSF_ACCEPTS_FOCUS =     0x0040;
+const WORD PSF_KEEPS_CHILD_FOCUS = 0x0080;
+const WORD PSF_CONTINUOUS_SCROLL = 0x0100;
+const WORD PSF_TAB_STOP =          0x0200;
+const WORD PSF_OWNS_POINTER =      0x0400;    
+const WORD PSF_ALWAYS_ON_TOP =     0x4000;
+const WORD PSF_VIEWPORT =          0x8000;
+
+/// @name List Style
+const WORD LS_WRAP_SELECT = 0x2000;	///< @hideinitializer wrap select
+
 struct PegPoint {
   BOOL operator!=(const PegPoint &other) const {
     if (x != other.x || y != other.y) {
@@ -95,10 +159,14 @@ struct PegRect {
     wBottom = y2;
   }
 
-  inline void CenterIfLandscape(BOOL shiftUp);
+  inline void CenterIfLandscape(BOOL shiftUp) {
+    PegRect_CenterIfLandscape(this, shiftUp);
+  }
 
-  void SetAndCenterIfLandscape(SIGNED x1, SIGNED y1, SIGNED x2, SIGNED y2,
-                               BOOL shiftUp);
+  inline void SetAndCenterIfLandscape(SIGNED x1, SIGNED y1, SIGNED x2,
+                                      SIGNED y2, BOOL shiftUp) {
+    PegRect_SetAndCenterIfLandscape(this, x1, y1, x2, y2, shiftUp);
+  }
 
   SIGNED wLeft;
   SIGNED wTop;
@@ -106,7 +174,11 @@ struct PegRect {
   SIGNED wBottom;
 };
 
-extern "C" void PegRect_CenterIfLandscape(PegRect *self, BOOL shiftUp);
-extern "C" void PegRect_SetAndCenterIfLandscape(PegRect *self, SIGNED x1,
-                                                SIGNED y1, SIGNED x2, SIGNED y2,
-                                                BOOL shiftUp);
+struct PegBitmap {
+  UCHAR uFlags;
+  UCHAR uBitsPix;
+  WORD wWidth;
+  WORD wHeight;
+  DWORD dTransColor;
+  UCHAR *pStart;
+};
