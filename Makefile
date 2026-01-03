@@ -3,10 +3,10 @@ BUILDDIR = obj
 OUTDIR = dist
 DEPDIR = .deps
 
+OS_TXT = $(OUTDIR)/os.txt
+
 OSDIR_2000 := os/2000/
 OSDIR_7002 := os/7002/
-
-OS ?= 7002
 
 SOURCEDIR := $(SRCDIR) $(OSDIR_$(OS))
 
@@ -64,22 +64,32 @@ clean:
 %.hh3: %.elf
 	$(STRIP) -o $@ $^
 
+$(OS_TXT): phony
+	@mkdir -p $(OUTDIR)
+	@tmp=$@.tmp; \
+	printf '%s\n' '$(OS)' > $$tmp; \
+	if test -f $@ && cmp -s $$tmp $@; then \
+		rm -f $$tmp; \
+	else \
+		mv -f $$tmp $@; \
+	fi
+
 $(APP_ELF): $(OBJECTS)
 	@mkdir -p $(dir $@)
 	$(LD) -Wl,-Map $@.map -o $@ $(LD_FLAGS) $^ $(LIBS)
 
 $(NOLTOOBJS): FUNCTION_FLAGS+=-fno-lto
 
-$(BUILDDIR)/%.o: %.S
+$(BUILDDIR)/%.o: %.S $(OS_TXT)
 	@mkdir -p $(dir $@)
 	$(AS) -c $< -o $@ $(AS_FLAGS)
 
-$(BUILDDIR)/%.o: %.c
+$(BUILDDIR)/%.o: %.c $(OS_TXT)
 	@mkdir -p $(dir $@)
 	@mkdir -p $(dir $(DEPDIR)/$<)
 	+$(CC) -c $< -o $@ $(CC_FLAGS) $(DEPFLAGS)
 
-$(BUILDDIR)/%.o: %.cpp
+$(BUILDDIR)/%.o: %.cpp $(OS_TXT)
 	@mkdir -p $(dir $@)
 	@mkdir -p $(dir $(DEPDIR)/$<)
 	+$(CXX) -c $< -o $@ $(CXX_FLAGS) $(DEPFLAGS)
@@ -88,6 +98,6 @@ compile_commands.json:
 	$(MAKE) $(MAKEFLAGS) clean
 	bear -- sh -c "$(MAKE) $(MAKEFLAGS) --keep-going all || exit 0"
 
-.PHONY: elf hh3 all clean compile_commands.json
+.PHONY: phony elf hh3 all clean compile_commands.json
 
 -include $(DEPFILES)
