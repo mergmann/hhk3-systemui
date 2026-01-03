@@ -81,12 +81,14 @@ private:
   inline PegList_VFTable *vftOld() {
     return static_cast<PegList_VFTable *>(PegWindow::_vftOld);
   }
+
+  friend class PegHorzList;
+  friend class PegVertList;
 };
 
 class PegVertList : public PegList {
 public:
-  // TODO: Constructor address must be defined if instantiation is required
-  // PegVertList(const PegRect &Rect, WORD wId = 0, WORD wStyle = FF_THIN);
+  PegVertList(const PegRect &Rect, WORD wId = 0, WORD wStyle = FF_THIN);
 
 protected:
   virtual void PositionChildren(void);
@@ -94,8 +96,7 @@ protected:
 
 class PegHorzList : public PegList {
 public:
-  // TODO: Constructor address must be defined if instantiation is required
-  // PegHorzList(const PegRect &Rect, WORD wId = 0, WORD wStyle = FF_THIN);
+  PegHorzList(const PegRect &Rect, WORD wId = 0, WORD wStyle = FF_THIN);
 
 protected:
   virtual void PositionChildren(void);

@@ -106,3 +106,18 @@ void PegVertList::PositionChildren(void) {
 void PegHorzList::PositionChildren(void) {
   PegHorzList_PositionChildren(obj());
 }
+PegVertList::PegVertList(const PegRect &Rect, WORD wId, WORD wStyle)
+    : PegList(PegList_ctor(0, &Rect, wId, wStyle), sizeof(PegList_VFTable)) {
+
+  // Register the virtual function override for PositionChildren
+  // This ensures that when the OS calls PositionChildren, it uses the specific
+  // logic if we hooked it, or simply relies on the OS vtable if we didn't
+  // overwrite the vptr.
+  VFT_REGISTER(PegList, PositionChildren, (), ());
+}
+PegHorzList::PegHorzList(const PegRect &Rect, WORD wId, WORD wStyle)
+    : PegList(PegList_ctor(0, &Rect, wId, wStyle), sizeof(PegList_VFTable)) {
+
+  // Register the virtual function override for PositionChildren
+  VFT_REGISTER(PegList, PositionChildren, (), ());
+}

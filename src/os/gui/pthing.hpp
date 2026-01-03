@@ -95,6 +95,9 @@ public:
   VFT_FORWARD(RecordKeyMessage, void, (const PegMessage &mesg), (&mesg))
   VFT_FORWARD(RecordSystemMessage, void, (const PegMessage &mesg), (&mesg))
 
+  inline WORD Id() { return mwId; }
+  inline void Id(WORD wId) {mwId = wId;}
+
 protected:
   UCHAR muType;
   WORD mwStyle;
