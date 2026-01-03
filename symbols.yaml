@@ -74,19 +74,25 @@ symbols:
     7002: 0x800f96e8
 
   PegRadioButton_ctor_0:
+    2000: 0x800f9964
     7002: 0x800fa93c
+
   PegRadioButton_ctor_1:
-    7002: 0x8014eb0
+    2000: 0x8014db28
+    7002: 0x8014eb00
 
   PegList_ctor:
     2000: 0x801bd4e8
     7002: 0x801be594
   PegList_PageDown:
     2000: 0x801bdea6
+    7002: 0x801bef52
   PegList_PageUp:
     2000: 0x801bdfb6
+    7002: 0x801bf062
   PegList_SelectNext:
     2000: 0x801bde02
+    7002: 0x801beeae
   PegList_SelectPrevious:
     2000: 0x00000000
 
@@ -106,12 +112,20 @@ symbols:
 
   CPDialog_ctor_2:
     2000: 0x800d57f6
+    7002: 0x800d67ce
+
   PegComboBoxItemPrompt_ctor_2:
     2000: 0x800fab38
+    7002: 0x800fbb10
+
   PegComboBox_ctor:
     2000: 0x800fbeaa
+    7002: 0x800fce82
+
   PegDialog_ctor:
     2000: 0x800fd828
+    7002: 0x800fe800
 
   PegNotebook_ctor:
     2000: 0x80104eec
+    7002: 0x80105ec4
