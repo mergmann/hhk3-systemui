@@ -19,7 +19,7 @@ DEPFLAGS=-MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
 WARNINGS=-Wall -Wextra -pedantic -Werror -pedantic-errors
 INCLUDES=-I$(SDK_DIR)/include #-I$(SOURCEDIR)
 DEFINES=
-FUNCTION_FLAGS=-fno-builtin -ffunction-sections -fdata-sections -gdwarf-5 -O2
+FUNCTION_FLAGS=-fno-builtin -ffunction-sections -fdata-sections -gdwarf-5 -O2 -flto
 COMMON_FLAGS=$(FUNCTION_FLAGS) $(INCLUDES) $(WARNINGS) $(DEFINES)
 
 CC:=sh4a_nofpueb-elf-gcc

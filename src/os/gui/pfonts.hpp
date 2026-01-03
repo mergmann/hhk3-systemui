@@ -63,8 +63,6 @@ public:
   virtual PegFont *GetFont();
   virtual WORD TextLength();
 
-  void *Test() { return vftOld(); }
-
 protected:
   /**
    * @brief Internal constructor that wraps a ClassPad object.

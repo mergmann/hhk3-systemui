@@ -3,6 +3,7 @@
 #include "pegtypes.hpp"
 #include "pfonts.hpp"
 #include "pthing.hpp"
+#include "util.hpp"
 #include <cstdint>
 
 enum PegButtonSignals {
@@ -13,6 +14,10 @@ enum PegButtonSignals {
   PSF_DOT_OFF,
   PSF_LIST_SELECT
 };
+
+// **************** //
+// *    Button    * //
+// **************** //
 
 struct PegButton_VFTable : PegThing_VFTable {};
 
@@ -46,9 +51,9 @@ private:
   }
 };
 
-extern "C" PegButton_Thin *PegButton_ctor_0(PegButton_Thin *, const PegRect *,
-                                            WORD, WORD);
-extern "C" PegButton_Thin *PegButton_ctor_1(PegButton_Thin *, WORD, WORD);
+// **************** //
+// * Text Button  * //
+// **************** //
 
 struct PegTextButton_VFTable : PegThing_VFTable {};
 
@@ -98,16 +103,61 @@ private:
   }
 };
 
-extern "C" PegTextButton_Thin *PegTextButton_ctor_0(PegTextButton_Thin *,
-                                                    PegRect *, const PEGCHAR *,
-                                                    WORD, WORD, COLORVAL);
+// **************** //
+// * Radio Button * //
+// **************** //
 
-extern "C" PegTextButton_Thin *PegTextButton_ctor_1(PegTextButton_Thin *,
-                                                    SIGNED, SIGNED, SIGNED,
-                                                    const PEGCHAR *, WORD, WORD,
-                                                    COLORVAL);
+struct PegRadioButton_VFTable : PegButton_VFTable {
+  VFTableFunction<void, BOOL> SetSelected;
+  VFTableFunction<BOOL> IsSelected;
+};
 
-extern "C" PegTextButton_Thin *PegTextButton_ctor_2(PegTextButton_Thin *,
-                                                    SIGNED, SIGNED,
-                                                    const PEGCHAR *, WORD, WORD,
-                                                    COLORVAL);
+static_assert(sizeof(PegRadioButton_VFTable) == 0x198,
+              "PegRadioButton_VFTable has wrong size");
+
+struct PegRadioButton_Thin : PegButton_Thin, PegTextThing_Thin {
+  uint32_t unknown_64;
+
+  VFT_FORWARD(SetSelected, void, (BOOL select = TRUE), (select))
+  VFT_FORWARD(IsSelected, BOOL, (), ())
+
+  inline PegRadioButton_VFTable *vft() {
+    return static_cast<PegRadioButton_VFTable *>(PegButton_Thin::_vft);
+  }
+};
+
+static_assert(sizeof(PegRadioButton_Thin) == 0x68,
+              "PegRadioButton_Thin has wrong size");
+
+class PegRadioButton : public PegButton, public PegTextThing {
+public:
+  PegRadioButton(SIGNED x, SIGNED y, const PEGCHAR *text, WORD id = 0,
+                 WORD style = AF_ENABLED, PegFont *font = NULL,
+                 BOOL unknown = TRUE);
+
+  PegRadioButton(PegRect &rect, const PEGCHAR *text, WORD id = 0,
+                 WORD style = AF_ENABLED);
+
+  virtual void SetSelected(BOOL select = TRUE);
+  virtual BOOL IsSelected();
+
+  inline PegRadioButton_Thin *obj() {
+    return static_cast<PegRadioButton_Thin *>(PegButton::_obj);
+  }
+
+protected:
+  /**
+   * @brief Internal constructor that wraps a ClassPad object.
+   * @param obj ClassPad object to wrap.
+   * @param vftSize Size of the derived VFT.
+   */
+  PegRadioButton(PegRadioButton_Thin *obj, size_t vftSize);
+
+private:
+  inline PegRadioButton_VFTable *vftNew() {
+    return static_cast<PegRadioButton_VFTable *>(PegThing::_vftNew);
+  }
+  inline PegRadioButton_VFTable *vftOld() {
+    return static_cast<PegRadioButton_VFTable *>(PegThing::_vftOld);
+  }
+};

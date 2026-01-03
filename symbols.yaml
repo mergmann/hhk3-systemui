@@ -73,6 +73,11 @@ symbols:
     2000: 0x800f8710
     7002: 0x800f96e8
 
+  PegRadioButton_ctor_0:
+    7002: 0x800fa93c
+  PegRadioButton_ctor_1:
+    7002: 0x8014eb0
+
   PegList_ctor:
     2000: 0x801bd4e8
     7002: 0x801be594
