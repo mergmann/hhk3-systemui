@@ -12,20 +12,30 @@ on:
 permissions:
   contents: read
 
-jobs:   
+jobs:
   build-artifact:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [2000, 7002]
+
     container:
       image: ghcr.io/classpaddev/hollyhock-3:v2.1.1
       credentials:
-       username: ${{ github.actor }}
-       password: ${{ secrets.github_token }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.github_token }}
 
     steps:
-    - uses: actions/checkout@v5
-      with:
-        submodules: true
-    - run: make -j
-    - uses: actions/upload-artifact@v4
-      with:
-        path: dist/**
+      - uses: actions/checkout@v5
+        with:
+          submodules: true
+
+      - name: Build
+        run: make -j OS=${{ matrix.os }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-OS-${{ matrix.os }}
+          path: dist/**
