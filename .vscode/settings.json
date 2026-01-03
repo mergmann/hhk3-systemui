@@ -2,6 +2,6 @@
     "clangd.arguments": [
         "--query-driver=/toolchain/bin/sh4a_nofpueb-elf-*"
     ],
-    "clangd.path": "/home/vscode/clangd_snapshot_20251102/bin/clangd",
+    "clangd.path": "/usr/lib/llvm-19/bin/clangd",
     "makefile.configureOnOpen": false
 }

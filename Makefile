@@ -94,9 +94,12 @@ $(BUILDDIR)/%.o: %.cpp $(OS_TXT)
 	@mkdir -p $(dir $(DEPDIR)/$<)
 	+$(CXX) -c $< -o $@ $(CXX_FLAGS) $(DEPFLAGS)
 
+OS ?= 7002
+
 compile_commands.json:
-	$(MAKE) $(MAKEFLAGS) clean
-	bear -- sh -c "$(MAKE) $(MAKEFLAGS) --keep-going all || exit 0"
+	@$(MAKE) OS=$(OS) clean
+	bear -- sh -c "$(MAKE) $(MAKEFLAGS) OS=$(OS) --keep-going all || exit 0"
+
 
 .PHONY: phony elf hh3 all clean compile_commands.json
 
