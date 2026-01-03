@@ -1,0 +1,95 @@
+symbols:
+  CPDialog_ctor_2:
+    2000: 0x800d57f6
+  PegComboBoxItemPrompt_ctor_2:
+    2000: 0x800fab38
+  PegComboBox_ctor:
+    2000: 0x800fbeaa
+  PegDecoratedWindow_ctor_0:
+    2000: 0x800fd312
+    7002: 0x800fe2ea
+  PegDecoratedWindow_ctor_1:
+    2000: 0x800fd360
+    7002: 0x800fe338
+  PegDialog_ctor:
+    2000: 0x800fd828
+  PegHorzList_PositionChildren:
+    2000: 0x00000000
+  PegHorzList_ctor:
+    2000: 0x801be4c0
+    7002: 0x801bf56c
+  PegList_PageDown:
+    2000: 0x801bdea6
+  PegList_PageUp:
+    2000: 0x801bdfb6
+  PegList_SelectNext:
+    2000: 0x801bde02
+  PegList_SelectPrevious:
+    2000: 0x00000000
+  PegList_ctor:
+    2000: 0x801bd4e8
+    7002: 0x801be594
+  PegMessageWindow_ctor_0:
+    2000: 0x80102826
+    7002: 0x801037fe
+  PegMessageWindow_ctor_1:
+    2000: 0x80102bb2
+    7002: 0x80103b8a
+  PegNotebook_ctor:
+    2000: 0x80104eec
+  PegRect_CenterIfLandscape:
+    2000: 0x8010a182
+    7002: 0x8010b15a
+  PegRect_SetAndCenterIfLandscape:
+    2000: 0x8010a132
+    7002: 0x8010b10a
+  PegScreen_Invalidate:
+    2000: 0x8010c89c
+    7002: 0x8010d874
+  PegTextBox_ctor:
+    2000: 0x8011c078
+    7002: 0x8011d050
+  PegTextButton_ctor_0:
+    2000: 0x800f84f6
+    7002: 0x800f94ce
+  PegTextButton_ctor_1:
+    2000: 0x800f85c0
+    7002: 0x800f9598
+  PegTextButton_ctor_2:
+    2000: 0x800f8710
+    7002: 0x800f96e8
+  PegTextThing_ctor_0:
+    2000: 0x800fe65e
+    7002: 0x800ff636
+  PegTextThing_ctor_1:
+    2000: 0x800fe71e
+    7002: 0x800ff6f6
+  PegThing_MessageQueue:
+    2000: 0x8011e616
+    7002: 0x8011f5ee
+  PegThing_Presentation:
+    2000: 0x8011e610
+    7002: 0x8011f5e8
+  PegThing_Screen:
+    2000: 0x8011e61c
+    7002: 0x8011f5f4
+  PegThing_ctor_0:
+    2000: 0x8011d7c4
+    7002: 0x8011e79c
+  PegThing_ctor_1:
+    2000: 0x8011d86e
+    7002: 0x8011e846
+  PegTitle_ctor:
+    2000: 0x8011fcde
+    7002: 0x80120cb6
+  PegVertList_PositionChildren:
+    2000: 0x00000000
+  PegVertList_ctor:
+    2000: 0x801be394
+    7002: 0x801bf440
+  PegWindow_ctor_0:
+    2000: 0x80120d5a
+    7002: 0x80121d32
+  PegWindow_ctor_1:
+    2000: 0x80120de6
+    7002: 0x80121dbe

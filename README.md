@@ -12,8 +12,13 @@ This is an early test for accessing the Peg components in Hollyhock 3.
 
 ## How to build
 ```sh
-make -j
+# Build for OS 2000
+make OS=2000
+
+# Build for OS 7002
+make OS=7002
 ```
+
 Or execute the default vscode build task with CRTL+SHIFT+B
 
 ## How to run
