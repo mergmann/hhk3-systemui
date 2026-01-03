@@ -11,6 +11,7 @@ struct PegThing_Thin;
 struct PegThing_VFTable;
 
 class PegThing;
+class PegList;
 
 extern "C" PegThing_Thin *PegThing_ctor_0(PegThing_Thin *, const PegRect *,
                                           WORD, WORD);
@@ -116,6 +117,7 @@ protected:
   }
 
   friend PegThing;
+  friend PegList;
 };
 
 static_assert(sizeof(PegThing_Thin) == 0x50, "PegThing_Thin has wrong size");
