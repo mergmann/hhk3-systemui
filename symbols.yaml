@@ -135,17 +135,17 @@ symbols:
     2000: 0x8025fd7a
     7002: 0x8025fd1e
   PegEditBox_DeleteMarkedText:
-    2000: 0x00000000
-    7002: 0x00000000
+    2000: 0x8025d82e
+    7002: 0x8026084e
   PegEditBox_CopyToScratchPad:
-    2000: 0x00000000
-    7002: 0x00000000
+    2000: 0x8025d9f6
+    7002: 0x80260a16
   PegEditBox_PasteFromScratchPad:
-    2000: 0x00000000
-    7002: 0x00000000
+    2000: 0x8025da82
+    7002: 0x80260aa2
   PegEditBox_HomeCursor:
-    2000: 0x00000000
-    7002: 0x00000000
+    2000: 0x8025dd8a
+    7002: 0x80260daa
   PegEditBox_InsertCharAtCursor:
     2000: 0x8025dd94
     7002: 0x80260db4
