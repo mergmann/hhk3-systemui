@@ -71,6 +71,11 @@ public:
 
   inline PegWindow_Thin *obj() { return static_cast<PegWindow_Thin *>(_obj); }
 
+  /// @brief Display the window.
+  /// @param flush Flush the message queue.
+  /// @param destroy Automatically destroys the underlying ClassPad object after
+  /// closing. It does NOT free this wrapper! Using the wrapper after that is a
+  /// UAF!
   virtual SIGNED ExecuteFlush(bool flush, bool destroy = true);
   virtual SIGNED Execute(void);
   virtual void SetScrollMode(UCHAR mode);

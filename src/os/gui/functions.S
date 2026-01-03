@@ -3,8 +3,14 @@
 .set _\name, \addr
 .endm
 
+DEFINE_OS_FUNC PegScreen_Invalidate 0x8010d874
+
 DEFINE_OS_FUNC PegThing_ctor_0 0x8011e79c
 DEFINE_OS_FUNC PegThing_ctor_1 0x8011e846
+
+DEFINE_OS_FUNC PegThing_Presentation 0x8011f5e8
+DEFINE_OS_FUNC PegThing_MessageQueue 0x8011f5ee
+DEFINE_OS_FUNC PegThing_Screen 0x8011f5f4
 
 DEFINE_OS_FUNC PegTextThing_ctor_0 0x800ff636
 DEFINE_OS_FUNC PegTextThing_ctor_1 0x800ff6f6

@@ -2,9 +2,6 @@
 
 #include "pthing.hpp"
 
-struct PegMessage;
-struct PegThing_Thin;
-
 struct PegMessage {
   WORD wType;
   SIGNED iData;

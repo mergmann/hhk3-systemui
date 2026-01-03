@@ -5,6 +5,15 @@
 #include "pthing.hpp"
 #include <cstdint>
 
+enum PegButtonSignals {
+  PSF_CLICKED = 8,
+  PSF_CHECK_ON,
+  PSF_CHECK_OFF,
+  PSF_DOT_ON,
+  PSF_DOT_OFF,
+  PSF_LIST_SELECT
+};
+
 struct PegButton_VFTable : PegThing_VFTable {};
 
 static_assert(sizeof(PegButton_VFTable) == 0x180,
