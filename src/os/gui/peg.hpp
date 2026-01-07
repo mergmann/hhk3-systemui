@@ -5,6 +5,7 @@
 #include "pbutton.hpp"
 #include "pdecwin.hpp"
 #include "pdialog.hpp"
+#include "peditbox.hpp"
 #include "pfonts.hpp"
 #include "plist.hpp"
 #include "pmesgwin.hpp"
