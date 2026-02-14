@@ -1,4 +1,17 @@
 symbols:
+  heapMax:
+    2000: 0x8ce80000
+    7002: 0x8ce80000
+  heapEndPtr:
+    2000: 0x8c2233a0
+    7002: 0x8c2233a8
+  heapReset:
+    2000: 0x800af6d6
+    7002: 0x800b06a6
+  heapFree:
+    2000: 0x800a76fc
+    7002: 0x800a86ac
+
   PegRect_CenterIfLandscape:
     2000: 0x8010a182
     7002: 0x8010b15a

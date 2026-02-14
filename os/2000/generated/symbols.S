@@ -6,11 +6,10 @@
 .set _\name, \addr
 .endm
 
-DEFINE_OS_FUNC heapMax    0x8ce80000
-DEFINE_OS_FUNC heapEndPtr 0x8c2233a0
-DEFINE_OS_FUNC heapReset  0x800af6d6
-DEFINE_OS_FUNC heapFree   0x800a76fc
-
+DEFINE_OS_FUNC heapMax 0x8CE80000
+DEFINE_OS_FUNC heapEndPtr 0x8C2233A0
+DEFINE_OS_FUNC heapReset 0x800AF6D6
+DEFINE_OS_FUNC heapFree 0x800A76FC
 DEFINE_OS_FUNC PegRect_CenterIfLandscape 0x8010A182
 DEFINE_OS_FUNC PegRect_SetAndCenterIfLandscape 0x8010A132
 DEFINE_OS_FUNC PegScreen_Invalidate 0x8010C89C
