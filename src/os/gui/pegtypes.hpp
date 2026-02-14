@@ -77,6 +77,8 @@ const UCHAR WSM_AUTOHSCROLL = 0x08;
 const UCHAR WSM_AUTOSCROLL = 0x0A;
 const UCHAR WSM_CONTINUOUS = 0x80;
 
+const WORD TT_COPY = 0x2000;
+
 #define PEG_FIRST_SIGNAL 0x80
 #define PEG_FIRST_USER_MESSAGE 0x4000
 #define PEG_SIGNAL(id, signal) (PEG_FIRST_SIGNAL + ((id) << 4) + signal)

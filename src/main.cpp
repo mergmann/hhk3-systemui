@@ -3,7 +3,10 @@
 #include <sdk/os/debug.h>
 #include <sdk/os/lcd.h>
 
+#include "heap_hack.hpp"
+
 #include "os/gui/peg.hpp"
+#include "os/gui/pegtypes.hpp"
 
 APP_NAME("PegEditBox Demo")
 APP_AUTHOR("snudget, pho3")
@@ -140,8 +143,26 @@ private:
   PegEditBox *mpEditBox; // Pointer to our new EditBox
 };
 
+extern "C" void calcInit() {
+  // Allocate 1MB of memory at the end of the heap for our program
+  auto *ptr = initFixedRegion(2 * 1024 * 1024);
+
+  // Not enough heap space, reset the system to recreate the heap
+  if (ptr != reinterpret_cast<void *>(0x8cc80000))
+    heapReset();
+}
+
+extern "C" void calcExit() {
+  // Call the OS out-of-memory logic to remove our heap abuse
+  heapReset();
+}
+
 int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv,
          [[maybe_unused]] char **envp) {
+  // TODO: Should be called by the loader before the actual binary is loaded.
+  // But since we reset the heap anyways if there is data, this shouldn't matter
+  calcInit();
+
   // Make window slightly larger to fit everything nicely
   PegRect rectWin(10, 10, 310, 280);
   auto win = new MyWindow(rectWin);
@@ -151,4 +172,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv,
   // But it won't delete the wrapper class
   // WARNING: This may change in the future, not sure yet
   delete win;
+
+  calcExit();
 }

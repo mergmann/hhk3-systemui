@@ -19,7 +19,7 @@ DEPFLAGS=-MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
 WARNINGS=-Wall -Wextra -pedantic -Werror -pedantic-errors
 INCLUDES=-I$(SDK_DIR)/include #-I$(SOURCEDIR)
 DEFINES=
-FUNCTION_FLAGS=-fno-builtin -ffunction-sections -fdata-sections -gdwarf-5 -O2 -flto
+FUNCTION_FLAGS=-fno-builtin -ffunction-sections -fdata-sections -gdwarf-5 -Oz -flto -fdevirtualize-at-ltrans -fwhole-program
 COMMON_FLAGS=$(FUNCTION_FLAGS) $(INCLUDES) $(WARNINGS) $(DEFINES)
 
 CC:=sh4a_nofpueb-elf-gcc
@@ -29,7 +29,7 @@ CXX:=sh4a_nofpueb-elf-g++
 CXX_FLAGS=-std=c++20 $(COMMON_FLAGS)
 
 LD:=sh4a_nofpueb-elf-g++
-LD_FLAGS:=$(FUNCTION_FLAGS) -Wl,--gc-sections
+LD_FLAGS:=$(FUNCTION_FLAGS) -Wl,--gc-sections,-Ttext-segment,0x8CC80000
 LIBS:=-L$(SDK_DIR) -lsdk
 
 READELF:=sh4a_nofpueb-elf-readelf
