@@ -18,8 +18,6 @@ PegTextButton_Thin *PegTextButton_ctor_2(PegTextButton_Thin *, SIGNED, SIGNED,
 PegRadioButton_Thin *PegRadioButton_ctor_0(PegRadioButton *, SIGNED, SIGNED,
                                            const PEGCHAR *, WORD, WORD,
                                            PegFont *, BOOL);
-PegRadioButton_Thin *PegRadioButton_ctor_1(PegRadioButton *, PegRect *,
-                                           const PEGCHAR *, WORD, WORD);
 }
 
 // **************** //
@@ -75,11 +73,6 @@ PegRadioButton::PegRadioButton(SIGNED x, SIGNED y, const PEGCHAR *text, WORD id,
     : PegRadioButton(
           PegRadioButton_ctor_0(0, x, y, text, id, style, font, unknown),
           sizeof(PegRadioButton_VFTable)) {}
-
-PegRadioButton::PegRadioButton(PegRect &rect, const PEGCHAR *text, WORD id,
-                               WORD style)
-    : PegRadioButton(PegRadioButton_ctor_1(0, &rect, text, id, style),
-                     sizeof(PegRadioButton_VFTable)) {}
 
 VFT_VIRTUAL(PegRadioButton, SetSelected, void, (BOOL select), (select))
 VFT_VIRTUAL(PegRadioButton, IsSelected, BOOL, (), ())

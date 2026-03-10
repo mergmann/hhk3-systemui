@@ -135,9 +135,6 @@ public:
                  WORD style = AF_ENABLED, PegFont *font = NULL,
                  BOOL unknown = TRUE);
 
-  PegRadioButton(PegRect &rect, const PEGCHAR *text, WORD id = 0,
-                 WORD style = AF_ENABLED);
-
   virtual void SetSelected(BOOL select = TRUE);
   virtual BOOL IsSelected();
 
