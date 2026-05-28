@@ -2,7 +2,7 @@
 
 ## About
 This is an early test for accessing the Peg components in Hollyhock 3.  
-### All addresses are currently hardcoded and will **only work on OS 7002!**
+### All addresses are currently hardcoded. **Only OS 7002 and 2000** are currently supported.
 
 ## How to Setup
 1. Clone to project
