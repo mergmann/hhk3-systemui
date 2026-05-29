@@ -1,6 +1,6 @@
 #include "systemui/heap_hack.h"
 
-extern "C" void heapFree(void *ptr);
+extern void heapFree(void *ptr);
 
 void *initFixedRegion(uint32_t size) {
   auto ptr = &heapMax - size;
@@ -18,7 +18,7 @@ void *initFixedRegion(uint32_t size) {
   uint32_t blockSize = ptr - endPtr;
 
   // malloc keeps the end ptr aligned
-  auto sizePtr = reinterpret_cast<uint32_t *>(endPtr);
+  auto sizePtr = (uint32_t *)endPtr;
 
   // Set metadata for the allocator
   *sizePtr = blockSize - 4;
