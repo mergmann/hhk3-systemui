@@ -1,4 +1,4 @@
-#include "heap_hack.hpp"
+#include "systemui/heap_hack.h"
 
 extern "C" void heapFree(void *ptr);
 

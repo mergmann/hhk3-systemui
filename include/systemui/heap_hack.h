@@ -1,12 +1,12 @@
 #pragma once
 
-#include <cstddef>
-#include <cstdint>
+#include <stddef.h>
+#include <stdint.h>
 
-extern "C" std::byte *heapEndPtr;
-extern "C" std::byte heapMax;
+extern uint32_t *heapEndPtr;
+extern uint32_t heapMax;
 
-extern "C" [[noreturn]] void heapReset();
+extern __attribute__((noreturn)) void heapReset();
 
 /**
  * @brief Initialize a fixed region of memory at the end of the heap
