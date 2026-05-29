@@ -1,8 +1,5 @@
-#include "pmesgwin.hpp"
-#include "pegtypes.hpp"
-#include "pfonts.hpp"
-#include "pwindow.hpp"
-#include "util.hpp"
+#include "systemui/pmesgwin.hpp"
+
 #include <cstddef>
 
 PegMessageWindow::PegMessageWindow(PegMessageWindow_Thin *obj, size_t vftSize)

@@ -1,5 +1,5 @@
-#include "ptitle.hpp"
-#include "pfonts.hpp"
+#include "systemui/ptitle.hpp"
+
 #include <cstddef>
 
 PegTitle::PegTitle(PegTitle_Thin *obj, size_t vftSize)

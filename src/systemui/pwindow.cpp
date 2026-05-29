@@ -1,5 +1,4 @@
-#include "pwindow.hpp"
-#include "util.hpp"
+#include "systemui/pwindow.hpp"
 
 PegWindow::PegWindow(PegWindow_Thin *obj, size_t vftSize)
     : PegThing(obj, vftSize) {

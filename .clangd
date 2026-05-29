@@ -7,6 +7,7 @@ CompileFlags:
   Remove:
     - -m*
     - -fstrict-volatile-bitfields
+    - -fdevirtualize-at-ltrans
 
 Style:
   FullyQualifiedNamespaces:

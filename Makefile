@@ -1,106 +1,105 @@
-SRCDIR = src
-BUILDDIR = obj
-OUTDIR = dist
-DEPDIR = .deps
+# Source files for all distributions
+SRC_DIR    = src
+# Source files for specific OS versions
+OS_DIR     = os
+# Header files for all distributions
+HEADER_DIR = include
+# Output directory for built libraries
+DIST_DIR   = dist
+# Intermediate build directory
+BUILD_DIR  = build
+# Name of the library
+LIB_NAME   = systemui
+# Toolchain prefix
+TOOLCHAIN  = sh4a_nofpueb-elf
 
-OS_TXT = $(OUTDIR)/os.txt
+SDK_DIR   ?= /sdk # Path to the SDK installation
+OS        ?= 7002
 
-OSDIR_2000 := os/2000/
-OSDIR_7002 := os/7002/
+SRC_DIRS := $(SRC_DIR) $(OS_DIR)/$(OS)
 
-SOURCEDIR := $(SRCDIR) $(OSDIR_$(OS))
+DEPS_DIR := $(BUILD_DIR)/$(OS)/deps
+OBJ_DIR  := $(BUILD_DIR)/$(OS)/obj
+LIB_DIR  := $(BUILD_DIR)/$(OS)/lib
 
-AS:=sh4a_nofpueb-elf-gcc
-AS_FLAGS:=-gdwarf-5
+OUT_DIR  := $(DIST_DIR)/$(OS)
 
-SDK_DIR?=/sdk
-
-DEPFLAGS=-MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
+DEPS_FLAGS=-MT $@ -MMD -MP -MF $(DEPS_DIR)/$*.d
 WARNINGS=-Wall -Wextra -pedantic -Werror -pedantic-errors
-INCLUDES=-I$(SDK_DIR)/include #-I$(SOURCEDIR)
+INCLUDES=-I$(SDK_DIR)/include -I$(HEADER_DIR)
 DEFINES=
-FUNCTION_FLAGS=-fno-builtin -ffunction-sections -fdata-sections -gdwarf-5 -Oz -flto -fdevirtualize-at-ltrans -fwhole-program
+FUNCTION_FLAGS=-fno-builtin -ffunction-sections -fdata-sections -gdwarf-5 -Os -flto -ffat-lto-objects
+
 COMMON_FLAGS=$(FUNCTION_FLAGS) $(INCLUDES) $(WARNINGS) $(DEFINES)
 
-CC:=sh4a_nofpueb-elf-gcc
-CC_FLAGS=-std=c23 $(COMMON_FLAGS)
+AS_FLAGS := -gdwarf-5
+CC_FLAGS  = -std=c23 $(COMMON_FLAGS)
+CXX_FLAGS = -std=c++20 $(COMMON_FLAGS)
+AR_FLAGS := rcs
 
-CXX:=sh4a_nofpueb-elf-g++
-CXX_FLAGS=-std=c++20 $(COMMON_FLAGS)
+AS:=sh4a_nofpueb-elf-gcc
+CC:=$(TOOLCHAIN)-gcc
+CXX:=$(TOOLCHAIN)-g++
+AR:=$(TOOLCHAIN)-ar
+READELF:=$(TOOLCHAIN)-readelf
+OBJCOPY:=$(TOOLCHAIN)-objcopy
+STRIP:=$(TOOLCHAIN)-strip
 
-LD:=sh4a_nofpueb-elf-g++
-LD_FLAGS:=$(FUNCTION_FLAGS) -Wl,--gc-sections,-Ttext-segment,0x8CC80000
 LIBS:=-L$(SDK_DIR) -lsdk
 
-READELF:=sh4a_nofpueb-elf-readelf
-OBJCOPY:=sh4a_nofpueb-elf-objcopy
-STRIP:=sh4a_nofpueb-elf-strip
+LIB_AR := $(LIB_DIR)/lib$(LIB_NAME).a
 
-APP_ELF := $(OUTDIR)/CPapp.elf
-APP_HH3 := $(APP_ELF:.elf=.hh3)
+AS_SOURCES:=$(shell find $(SRC_DIRS) -name '*.S')
+CC_SOURCES:=$(shell find $(SRC_DIRS) -name '*.c')
+CXX_SOURCES:=$(shell find $(SRC_DIRS) -name '*.cpp')
+OBJECTS := $(addprefix $(OBJ_DIR)/,$(AS_SOURCES:.S=.o)) \
+	$(addprefix $(OBJ_DIR)/,$(CC_SOURCES:.c=.o)) \
+	$(addprefix $(OBJ_DIR)/,$(CXX_SOURCES:.cpp=.o))
 
-AS_SOURCES:=$(shell find $(SOURCEDIR) -name '*.S')
-CC_SOURCES:=$(shell find $(SOURCEDIR) -name '*.c')
-CXX_SOURCES:=$(shell find $(SOURCEDIR) -name '*.cpp')
-OBJECTS := $(addprefix $(BUILDDIR)/,$(AS_SOURCES:.S=.o)) \
-	$(addprefix $(BUILDDIR)/,$(CC_SOURCES:.c=.o)) \
-	$(addprefix $(BUILDDIR)/,$(CXX_SOURCES:.cpp=.o))
+DEPFILES := $(OBJECTS:$(OBJ_DIR)/%.o=$(DEPS_DIR)/%.d)
 
-NOLTOOBJS := $(foreach obj, $(OBJECTS), $(if $(findstring /nolto/, $(obj)), $(obj)))
+lib: $(LIB_AR) Makefile
+all: tar
 
-DEPFILES := $(OBJECTS:$(BUILDDIR)/%.o=$(DEPDIR)/%.d)
-
-hh3: $(APP_HH3) Makefile
-elf: $(APP_ELF) Makefile
-
-all: elf hh3
 .DEFAULT_GOAL := all
 .SECONDARY: # Prevents intermediate files from being deleted
 
 .NOTPARALLEL: clean
 clean:
-	rm -rf $(BUILDDIR) $(OUTDIR) $(DEPDIR)
+	@echo $(SRC_DIRS)
+	rm -rf $(BUILD_DIR) $(DIST_DIR)
 
-%.hh3: %.elf
-	$(STRIP) -o $@ $^
+dist: lib
+	@mkdir -p $(OUT_DIR)/lib
+	cp $(LIB_AR) $(OUT_DIR)/lib/
+	cp -r $(HEADER_DIR) $(OUT_DIR)
 
-$(OS_TXT): phony
-	@mkdir -p $(OUTDIR)
-	@tmp=$@.tmp; \
-	printf '%s\n' '$(OS)' > $$tmp; \
-	if test -f $@ && cmp -s $$tmp $@; then \
-		rm -f $$tmp; \
-	else \
-		mv -f $$tmp $@; \
-	fi
+tar: dist
+	tar -czf $(DIST_DIR)/$(LIB_NAME)-$(OS).tar.gz -C $(OUT_DIR) .
 
-$(APP_ELF): $(OBJECTS)
+$(LIB_AR): $(OBJECTS)
 	@mkdir -p $(dir $@)
-	$(LD) -Wl,-Map $@.map -o $@ $(LD_FLAGS) $^ $(LIBS)
+	$(AR) rcs $@ $^
 
-$(NOLTOOBJS): FUNCTION_FLAGS+=-fno-lto
-
-$(BUILDDIR)/%.o: %.S $(OS_TXT)
+$(OBJ_DIR)/%.o: %.S
 	@mkdir -p $(dir $@)
 	$(AS) -c $< -o $@ $(AS_FLAGS)
 
-$(BUILDDIR)/%.o: %.c $(OS_TXT)
+$(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
-	@mkdir -p $(dir $(DEPDIR)/$<)
+	@mkdir -p $(dir $(DEPS_DIR)/$<)
 	+$(CC) -c $< -o $@ $(CC_FLAGS) $(DEPFLAGS)
 
-$(BUILDDIR)/%.o: %.cpp $(OS_TXT)
+$(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
-	@mkdir -p $(dir $(DEPDIR)/$<)
+	@mkdir -p $(dir $(DEPS_DIR)/$<)
 	+$(CXX) -c $< -o $@ $(CXX_FLAGS) $(DEPFLAGS)
-
-OS ?= 7002
 
 compile_commands.json:
 	@$(MAKE) OS=$(OS) clean
 	bear -- sh -c "$(MAKE) $(MAKEFLAGS) OS=$(OS) --keep-going all || exit 0"
 
 
-.PHONY: phony elf hh3 all clean compile_commands.json
+.PHONY: phony lib all clean compile_commands.json
 
 -include $(DEPFILES)

@@ -5,8 +5,7 @@
 
 #include "heap_hack.hpp"
 
-#include "os/gui/peg.hpp"
-#include "os/gui/pegtypes.hpp"
+#include "systemui/peg.hpp"
 
 APP_NAME("PegEditBox Demo")
 APP_AUTHOR("snudget, pho3")

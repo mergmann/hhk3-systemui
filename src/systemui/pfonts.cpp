@@ -1,9 +1,8 @@
-#include "pfonts.hpp"
-#include "pegtypes.hpp"
-#include "util.hpp"
 #include <cstdio>
 #include <cstring>
 #include <sdk/os/mem.h>
+
+#include "systemui/pfonts.hpp"
 
 PegTextThing::PegTextThing(PegTextThing_Thin *obj, size_t vftSize)
     : Element(obj) {

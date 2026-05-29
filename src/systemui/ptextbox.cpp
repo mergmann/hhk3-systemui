@@ -1,7 +1,4 @@
-#include "ptextbox.hpp"
-#include "pegtypes.hpp"
-#include "pfonts.hpp"
-#include "util.hpp"
+#include "systemui/ptextbox.hpp"
 
 PegTextBox::PegTextBox(PegTextBox_Thin *obj, size_t vftSize)
     : PegWindow(obj, vftSize), PegTextThing(obj, sizeof(PegTextThing_VFTable)) {

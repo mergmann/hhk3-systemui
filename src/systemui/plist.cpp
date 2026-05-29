@@ -1,5 +1,4 @@
-#include "plist.hpp"
-#include "pthing.hpp"
+#include "systemui/plist.hpp"
 
 PegList::PegList(PegList_Thin *obj, size_t vftSize) : PegWindow(obj, vftSize) {
   auto vft = vftNew();

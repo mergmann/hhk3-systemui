@@ -1,6 +1,4 @@
-#include "peditbox.hpp"
-#include "pegtypes.hpp"
-#include "util.hpp"
+#include "systemui/peditbox.hpp"
 
 // C Exports
 extern "C" {

@@ -1,6 +1,5 @@
-#include "pthing.hpp"
-#include "pmessage.hpp"
-#include "util.hpp"
+#include "systemui/pthing.hpp"
+
 #include <sdk/os/mem.h>
 
 PegThing::PegThing(PegThing_Thin *obj, size_t vftSize) : Element(obj) {
