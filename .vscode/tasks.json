@@ -4,9 +4,10 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "Build for OS 7002",
             "type": "shell",
             "command": "make",
+            "args": [ "OS=7002" ],
             "problemMatcher": [
                 "$gcc"
             ],
@@ -16,17 +17,29 @@
             }
         },
         {
+            "label": "Build for OS 2000",
+            "type": "shell",
+            "command": "make",
+            "args": [ "OS=2000" ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build"
+            }
+        },
+        {
             "label": "clean",
             "type": "shell",
             "command": "make clean",
-            "problemMatcher": [],
+            "problemMatcher": [ ],
             "group": "build"
         },
         {
             "label": "compile commands",
             "type": "shell",
             "command": "make compile_commands.json",
-            "problemMatcher": [],
+            "problemMatcher": [ ],
             "group": "build"
         }
     ]
