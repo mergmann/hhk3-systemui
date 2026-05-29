@@ -2,6 +2,8 @@
 
 #include <sdk/os/mem.h>
 
+using namespace systemui;
+
 PegThing::PegThing(PegThing_Thin *obj, size_t vftSize) : Element(obj) {
   _vftOld = obj->_vft;
   _vftNew = Mem_Malloc(vftSize);

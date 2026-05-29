@@ -2,6 +2,8 @@
 
 #include <cstddef>
 
+using namespace systemui;
+
 PegMessageWindow::PegMessageWindow(PegMessageWindow_Thin *obj, size_t vftSize)
     : PegWindow(obj, vftSize), PegTextThing(obj, sizeof(PegTextThing_VFTable)) {
 }

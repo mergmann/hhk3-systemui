@@ -2,6 +2,8 @@
 
 #include "pwindow.hpp"
 
+namespace systemui {
+
 // Forward declare
 class PegList;
 
@@ -109,4 +111,6 @@ PegThing_Thin *PegList_PageUp(PegList_Thin *self);
 
 void PegVertList_PositionChildren(PegList_Thin *self);
 void PegHorzList_PositionChildren(PegList_Thin *self);
+}
+
 }

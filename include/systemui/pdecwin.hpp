@@ -2,6 +2,8 @@
 
 #include "pwindow.hpp"
 
+namespace systemui {
+
 struct PegDecoratedWindow_VFTable : PegWindow_VFTable {};
 
 static_assert(sizeof(PegDecoratedWindow_VFTable) == 0x204,
@@ -47,3 +49,5 @@ extern "C" PegDecoratedWindow_Thin *
 PegDecoratedWindow_ctor_0(PegDecoratedWindow_Thin *, PegRect *, WORD);
 extern "C" PegDecoratedWindow_Thin *
 PegDecoratedWindow_ctor_1(PegDecoratedWindow_Thin *, WORD);
+
+}

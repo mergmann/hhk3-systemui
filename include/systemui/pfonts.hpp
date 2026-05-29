@@ -5,6 +5,8 @@
 #include "pegtypes.hpp"
 #include "util.hpp"
 
+namespace systemui {
+
 struct PegMessage;
 class PegTextThing;
 
@@ -87,3 +89,5 @@ extern "C" PegTextThing_Thin *PegTextThing_ctor_0(PegTextThing_Thin *,
 
 extern "C" PegTextThing_Thin *PegTextThing_ctor_1(PegTextThing_Thin *, WORD,
                                                   UCHAR);
+
+}

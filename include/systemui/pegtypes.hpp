@@ -1,5 +1,7 @@
 #pragma once
 
+namespace systemui {
+
 typedef int BOOL;
 #define TRUE 1
 #define FALSE 0
@@ -185,3 +187,5 @@ struct PegBitmap {
   DWORD dTransColor;
   UCHAR *pStart;
 };
+
+}

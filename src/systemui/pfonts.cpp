@@ -4,6 +4,8 @@
 
 #include "systemui/pfonts.hpp"
 
+using namespace systemui;
+
 PegTextThing::PegTextThing(PegTextThing_Thin *obj, size_t vftSize)
     : Element(obj) {
   _vftOld = obj->_vft;

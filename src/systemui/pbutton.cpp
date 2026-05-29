@@ -2,6 +2,8 @@
 
 #include "systemui/pbutton.hpp"
 
+using namespace systemui;
+
 extern "C" {
 PegButton_Thin *PegButton_ctor_0(PegButton_Thin *, const PegRect *, WORD, WORD);
 PegButton_Thin *PegButton_ctor_1(PegButton_Thin *, WORD, WORD);

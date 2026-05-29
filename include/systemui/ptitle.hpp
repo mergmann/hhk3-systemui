@@ -3,6 +3,8 @@
 #include "pfonts.hpp"
 #include "pthing.hpp"
 
+namespace systemui {
+
 struct PegTitle_VFTable : PegThing_VFTable {
   VFT_UNKNOWN_SLOTS(1, 0);
 };
@@ -50,3 +52,5 @@ private:
 };
 
 extern "C" PegTitle_Thin *PegTitle_ctor(PegTitle_Thin *, const PEGCHAR *, WORD);
+
+}

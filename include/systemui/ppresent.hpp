@@ -2,6 +2,8 @@
 
 #include "pwindow.hpp"
 
+namespace systemui {
+
 struct PegPresentationManager_VFTable : PegWindow_VFTable {
   VFTableFunction<SIGNED, PegMessage *> Dispatch;
 };
@@ -46,3 +48,5 @@ protected:
 
 static_assert(sizeof(PegPresentationManager_Thin) == 0xe4,
               "PegPresentationManager_Thin has wrong size");
+
+}

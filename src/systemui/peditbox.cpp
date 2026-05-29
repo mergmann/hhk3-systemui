@@ -1,5 +1,7 @@
 #include "systemui/peditbox.hpp"
 
+using namespace systemui;
+
 // C Exports
 extern "C" {
 // Constructor (inferred from dump reference 8025fd7a)

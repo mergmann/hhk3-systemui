@@ -5,6 +5,8 @@
 #include "pfonts.hpp"
 #include "pthing.hpp"
 
+namespace systemui {
+
 enum PegButtonSignals {
   PSF_CLICKED = 8,
   PSF_CHECK_ON,
@@ -157,3 +159,5 @@ private:
     return static_cast<PegRadioButton_VFTable *>(PegThing::_vftOld);
   }
 };
+
+}

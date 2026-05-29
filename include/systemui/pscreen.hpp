@@ -4,6 +4,8 @@
 
 #include "pthing.hpp"
 
+namespace systemui {
+
 class PegScreen_Thin;
 
 extern "C" void PegScreen_Invalidate(PegScreen_Thin *, const PegRect *);
@@ -85,3 +87,5 @@ private:
 };
 
 static_assert(sizeof(PegScreen_Thin) == 0x58, "PegScreen_Thin has wrong size");
+
+}

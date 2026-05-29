@@ -1,5 +1,7 @@
 #include "systemui/pdecwin.hpp"
 
+using namespace systemui;
+
 PegDecoratedWindow::PegDecoratedWindow(PegDecoratedWindow_Thin *obj,
                                        size_t vftSize)
     : PegWindow(obj, vftSize) {}

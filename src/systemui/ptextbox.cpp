@@ -1,5 +1,7 @@
 #include "systemui/ptextbox.hpp"
 
+using namespace systemui;
+
 PegTextBox::PegTextBox(PegTextBox_Thin *obj, size_t vftSize)
     : PegWindow(obj, vftSize), PegTextThing(obj, sizeof(PegTextThing_VFTable)) {
   VFT_REGISTER(PegTextBox, DataSet, (const PEGCHAR *text), (text));

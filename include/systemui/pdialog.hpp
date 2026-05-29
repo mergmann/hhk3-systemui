@@ -4,6 +4,8 @@
 
 #include "pdecwin.hpp"
 
+namespace systemui {
+
 struct PegDialog_VFTable : PegDecoratedWindow_VFTable {};
 
 static_assert(sizeof(PegDialog_VFTable) == 0x204,
@@ -17,3 +19,5 @@ protected:
 };
 
 static_assert(sizeof(PegDialog_Thin) == 0x90, "PegDialog_Thin has wrong size");
+
+}

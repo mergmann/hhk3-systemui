@@ -1,5 +1,7 @@
 #include "systemui/plist.hpp"
 
+using namespace systemui;
+
 PegList::PegList(PegList_Thin *obj, size_t vftSize) : PegWindow(obj, vftSize) {
   auto vft = vftNew();
 

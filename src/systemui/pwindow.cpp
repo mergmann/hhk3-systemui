@@ -1,5 +1,7 @@
 #include "systemui/pwindow.hpp"
 
+using namespace systemui;
+
 PegWindow::PegWindow(PegWindow_Thin *obj, size_t vftSize)
     : PegThing(obj, vftSize) {
   auto vft = vftNew();

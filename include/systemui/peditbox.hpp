@@ -2,6 +2,8 @@
 
 #include "ptextbox.hpp"
 
+namespace systemui {
+
 struct PegEditBox_VFTable : PegTextBox_VFTable {
   // PegEditBox does not appear to add new virtual slots to the primary VTable
   // (inherited from PegWindow -> PegTextBox), but it overrides existing ones.
@@ -75,3 +77,5 @@ private:
     return static_cast<PegEditBox_VFTable *>(PegWindow::_vftOld);
   }
 };
+
+}

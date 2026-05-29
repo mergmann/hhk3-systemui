@@ -6,6 +6,8 @@
 #include "pfonts.hpp"
 #include "pwindow.hpp"
 
+namespace systemui {
+
 enum MessageWindowTypeEnum {
   ERROR_WINDOW,
   TWO_SECTION_WINDOW,
@@ -87,3 +89,5 @@ extern "C" PegMessageWindow_Thin *
 PegMessageWindow_ctor_1(PegMessageWindow_Thin *, const PEGCHAR *,
                         const PEGCHAR *, const PEGCHAR *, WORD, WORD, void *,
                         WORD, MessageWindowTypeEnum);
+
+}

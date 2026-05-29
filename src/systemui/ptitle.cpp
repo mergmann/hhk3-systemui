@@ -2,6 +2,8 @@
 
 #include <cstddef>
 
+using namespace systemui;
+
 PegTitle::PegTitle(PegTitle_Thin *obj, size_t vftSize)
     : PegThing(obj, vftSize), PegTextThing(obj, sizeof(PegTextThing_VFTable)) {}
 

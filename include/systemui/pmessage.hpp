@@ -2,6 +2,8 @@
 
 #include "pthing.hpp"
 
+namespace systemui {
+
 struct PegMessage {
   WORD wType;
   SIGNED iData;
@@ -19,3 +21,5 @@ struct PegMessage {
     UCHAR uUserData[8];
   };
 };
+
+}

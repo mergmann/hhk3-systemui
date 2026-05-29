@@ -3,6 +3,9 @@
 #include "pfonts.hpp"
 #include "pwindow.hpp"
 
+
+namespace systemui {
+
 struct PegTextBox_VFTable : PegWindow_VFTable {
   VFTableFunction<void, const PEGCHAR *> DataSet;
   VFTableFunction<void, const PEGCHAR *, BOOL> Append;
@@ -89,3 +92,5 @@ private:
 
 extern "C" PegTextBox_Thin *PegTextBox_ctor(PegTextBox_Thin *, PegRect *, WORD,
                                             WORD, const PEGCHAR *, WORD);
+
+}

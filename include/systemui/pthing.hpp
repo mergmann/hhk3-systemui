@@ -5,6 +5,8 @@
 #include "pegtypes.hpp"
 #include "util.hpp"
 
+namespace systemui {
+
 struct PegMessage;
 class PegScreen_Thin;
 
@@ -188,3 +190,5 @@ private:
     return static_cast<PegThing_VFTable *>(_vftOld);
   }
 };
+
+}
