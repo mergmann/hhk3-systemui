@@ -1,11 +1,10 @@
 #pragma once
 
-#include "pegtypes.hpp"
-#include "pfonts.hpp"
-#include "pwindow.hpp"
-#include "util.hpp"
 #include <cstddef>
 #include <cstdint>
+
+#include "pfonts.hpp"
+#include "pwindow.hpp"
 
 enum MessageWindowTypeEnum {
   ERROR_WINDOW,

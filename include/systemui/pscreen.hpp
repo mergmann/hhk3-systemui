@@ -1,9 +1,8 @@
 #pragma once
 
-#include "pegtypes.hpp"
-#include "pthing.hpp"
-#include "util.hpp"
 #include <cstdint>
+
+#include "pthing.hpp"
 
 class PegScreen_Thin;
 

@@ -1,7 +1,8 @@
 #pragma once
 
-#include "pdecwin.hpp"
 #include <cstdint>
+
+#include "pdecwin.hpp"
 
 struct PegDialog_VFTable : PegDecoratedWindow_VFTable {};
 

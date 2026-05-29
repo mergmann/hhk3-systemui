@@ -1,8 +1,9 @@
 #pragma once
 
+#include <cstddef>
+
 #include "pegtypes.hpp"
 #include "util.hpp"
-#include <cstddef>
 
 struct PegMessage;
 class PegScreen_Thin;

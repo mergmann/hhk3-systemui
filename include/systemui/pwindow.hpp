@@ -1,9 +1,6 @@
 #pragma once
 
-#include "pegtypes.hpp"
 #include "pmessage.hpp"
-#include "pthing.hpp"
-#include "util.hpp"
 
 struct PegWindow_VFTable : PegThing_VFTable {
   VFTableFunction<SIGNED, bool, bool> ExecuteFlush;

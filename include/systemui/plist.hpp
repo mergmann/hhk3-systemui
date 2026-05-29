@@ -1,9 +1,6 @@
 #pragma once
 
-#include "pegtypes.hpp"
-#include "pthing.hpp" // PegThing/PegThing_Thin
 #include "pwindow.hpp"
-#include "util.hpp"
 
 // Forward declare
 class PegList;

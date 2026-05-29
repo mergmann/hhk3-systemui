@@ -1,10 +1,9 @@
 #pragma once
 
-#include "pegtypes.hpp"
+#include <cstdint>
+
 #include "pfonts.hpp"
 #include "pthing.hpp"
-#include "util.hpp"
-#include <cstdint>
 
 enum PegButtonSignals {
   PSF_CLICKED = 8,

@@ -2,7 +2,6 @@
 
 #include "pfonts.hpp"
 #include "pwindow.hpp"
-#include "util.hpp"
 
 struct PegTextBox_VFTable : PegWindow_VFTable {
   VFTableFunction<void, const PEGCHAR *> DataSet;

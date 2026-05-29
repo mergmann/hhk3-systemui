@@ -1,6 +1,5 @@
 #pragma once
 
-#include "pegtypes.hpp"
 #include "pwindow.hpp"
 
 struct PegPresentationManager_VFTable : PegWindow_VFTable {
