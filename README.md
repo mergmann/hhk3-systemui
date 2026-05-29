@@ -21,11 +21,5 @@ make OS=7002
 
 Or execute the default vscode build task with CRTL+SHIFT+B
 
-## How to run
-Copy `dist/CPapp.hh3` to the root of the calculator when connected in usb storage mode and then select and run from the launcher.
-
-## How to change the file name (recommended)
-Open the Makefile and adjust this line to what you want:
-```Makefile
-APP_ELF := $(OUTDIR)/<your_file_name>.elf
-```
+## How to use
+The headers and libs are distributed in `dist/<OS>/` or in the archive `dist/systemui-<OS>.tar.gz`
