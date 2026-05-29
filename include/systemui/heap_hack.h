@@ -3,10 +3,16 @@
 #include <stddef.h>
 #include <stdint.h>
 
-extern uint32_t *heapEndPtr;
-extern uint32_t heapMax;
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-extern __attribute__((noreturn)) void heapReset();
+extern volatile uint8_t *heapEndPtr;
+extern uint8_t heapMax;
+
+__attribute__((noreturn)) void heapReset();
+
+void uninitFixedRegion(uint32_t size);
 
 /**
  * @brief Initialize a fixed region of memory at the end of the heap
@@ -15,3 +21,7 @@ extern __attribute__((noreturn)) void heapReset();
  * @return void*
  */
 void *initFixedRegion(uint32_t size);
+
+#ifdef __cplusplus
+}
+#endif
