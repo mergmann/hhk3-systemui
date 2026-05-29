@@ -38,4 +38,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dist-OS-${{ matrix.os }}
-          path: dist/**
+          path: dist/systemui-${{ matrix.os }}.tar.gz
