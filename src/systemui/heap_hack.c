@@ -14,11 +14,11 @@ void *initFixedRegion(uint32_t size) {
   // Consume the full heap space, preven sbrk from growing
   heapEndPtr = &heapMax;
 
-  // Size of the free block between our fixed region and the current heap end
-  uint32_t blockSize = ptr - endPtr;
+  // Size of the free block between the current heap end and our fixed region
+  uint32_t freeSize = ptr - endPtr;
 
   // Set metadata for the allocator
-  *(uint32_t *)endPtr = (blockSize - 1) * 4;
+  *(uint32_t *)endPtr = freeSize - 4;
 
   // Donate the free block to the allocator
   heapFree((void *)(endPtr + 4));
