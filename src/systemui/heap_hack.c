@@ -17,11 +17,11 @@ void *initFixedRegion(uint32_t size) {
   // Size of the free block between the current heap end and our fixed region
   uint32_t freeSize = ptr - endPtr;
 
-  // Set metadata for the allocator
-  *(uint32_t *)endPtr = freeSize - 4;
-
-  // Donate the free block to the allocator
-  heapFree((void *)(endPtr + 4));
+  // Only donate if there is enough space to donate
+  if (freeSize >= 8) {
+    *(uint32_t *)endPtr = freeSize - 4;
+    heapFree((void *)(endPtr + 4));
+  }
 
   return ptr;
 }
